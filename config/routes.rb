@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
   get 'candidates/index'
   resources :votes
   devise_for :users
