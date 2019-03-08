@@ -6,6 +6,10 @@ class User < ApplicationRecord
 
   has_many :received_votes, class_name: 'Vote', foreign_key: 'candidate'
 
+  def to_s
+    email
+  end
+
   def score
     self.received_votes.count
   end

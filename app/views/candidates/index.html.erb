@@ -13,7 +13,11 @@
       <tr>
         <td><%= candidate.email %></td>
 	<td><%= candidate.score %></td>
-        <td><%= link_to 'Vote', new_vote_path %></td>
+        <td>
+	  <%= link_to 'Vote', votes_path(
+	    vote: { candidate_id: candidate.id }
+	  ), method: :post %>
+	</td>
       </tr>
     <% end %>
   </tbody>
