@@ -2,7 +2,7 @@ require 'test_helper'
 
 class VotesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @vote = votes(:one)
+    @vote = create(:vote)
   end
 
   test "should get index" do
