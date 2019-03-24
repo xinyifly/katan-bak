@@ -16,6 +16,8 @@ class VotesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create vote" do
+    sign_in create(:user)
+
     assert_difference('Vote.count') do
       post votes_url, params: { vote: { candidate_id: @vote.candidate_id, voter_id: @vote.voter_id } }
     end
