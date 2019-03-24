@@ -27,22 +27,4 @@ class VotesControllerTest < ActionDispatch::IntegrationTest
     get vote_url(@vote)
     assert_response :success
   end
-
-  test "should get edit" do
-    get edit_vote_url(@vote)
-    assert_response :success
-  end
-
-  test "should update vote" do
-    patch vote_url(@vote), params: { vote: { candidate_id: @vote.candidate_id, voter_id: @vote.voter_id } }
-    assert_redirected_to vote_url(@vote)
-  end
-
-  test "should destroy vote" do
-    assert_difference('Vote.count', -1) do
-      delete vote_url(@vote)
-    end
-
-    assert_redirected_to votes_url
-  end
 end
