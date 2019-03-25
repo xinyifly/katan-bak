@@ -24,7 +24,7 @@ class VotesController < ApplicationController
   # POST /votes
   # POST /votes.json
   def create
-    @vote = Vote.new(vote_params)
+    @vote = current_user.vote(User.find(vote_params[:candidate_id]))
 
     respond_to do |format|
       if @vote.save
@@ -69,6 +69,6 @@ class VotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vote_params
-      params.require(:vote).permit(:candidate_id).merge(:voter_id => current_user.id)
+      params.require(:vote).permit(:candidate_id)
     end
 end

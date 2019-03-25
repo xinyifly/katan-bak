@@ -29,4 +29,14 @@ class VotesControllerTest < ActionDispatch::IntegrationTest
     get vote_url(@vote)
     assert_response :success
   end
+
+  test "shouldn't vote yourself" do
+    sign_in user = create(:user)
+
+    assert_no_difference('Vote.count') do
+      post votes_url, params: { vote: { candidate_id: user.id } }, as: :json
+    end
+    
+    assert_response :unprocessable_entity
+  end
 end

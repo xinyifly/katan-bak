@@ -13,4 +13,8 @@ class User < ApplicationRecord
   def score
     self.received_votes.count
   end
+
+  def vote(candidate)
+    Vote.create(candidate: candidate, voter: self)
+  end
 end
