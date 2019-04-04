@@ -1,2 +1,10 @@
 <h1>Welcome</h1>
+<p>
+  <% if current_user %>
+    <%= current_user %>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= current_user || link_to('Login', new_user_session_path) %>
+  <% end %>
+</p>
 <p><%= link_to 'Candidates', candidates_path %></p>
