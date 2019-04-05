@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'ranking/index'
   get 'candidates', to: 'candidates#index'
   resources :votes, only: [:index, :show, :new, :create]
   devise_for :users
