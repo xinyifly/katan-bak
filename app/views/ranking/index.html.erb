@@ -1,2 +1,24 @@
-<h1>Ranking#index</h1>
-<p>Find me in app/views/ranking/index.html.erb</p>
+<h1>Ranking</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Score</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ranks.each do |rank| %>
+      <tr>
+        <td><%= rank.candidate.email %></td>
+	<td><%= rank.score %></td>
+        <td>
+	  <%= current_user && link_to('Vote', votes_path(
+	    vote: { candidate_id: rank.candidate.id }
+	  ), method: :post) %>
+	</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
