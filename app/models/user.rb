@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :received_votes, class_name: 'Vote', foreign_key: 'candidate'
+  has_many :received_votes, class_name: 'Vote', foreign_key: 'candidate_id'
 
   def to_s
     email
